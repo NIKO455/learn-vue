@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title></title>
+    <link href="style.css" rel="stylesheet">
+  </head>
+  <body>
+    
+    <div id="app" v-clock>
+      <p>
+        {{ getName()  }}
+      </p>
+      <p><a v-bind:href="url" target="_blank">Google</a></p>
+      <p v-html="raw_html"></p>
+      <p>{{ age }}</p>
+
+      <div>
+        <button type="button" v-on:click="increment"
+        >Increment</button>
+        <button type="button" v-on:click="decrement">Decrement</button>
+      </div>
+
+      <br>
+
+      <label for="name">Name</label>
+      <input type="text" id="name" v-model="name">
+      <br>
+      <br>
+      <label for="email">Email</label>
+      <!-- if we have to send the parameter into the method then we have to send the $event at last with it 
+           if we don't send any thing then by default the $event is send by calling method as a parament by vue,
+           so if we send the data with the calling method then we manually has to send the $event with it 
+      -->
+      <input type="text" id="email" v-bind:value="email" v-on:input="handleEmailChange('first', $event)">
+    </div>
+
+  <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+  <script src="app.js"></script> 
+  </body>
+</html>
